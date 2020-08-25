@@ -7,7 +7,10 @@ const usersRouter = require("./services/users")
 const server = express()
 server.use(express.json())
 server.use("/users", usersRouter)
-
+server.use((error, req, res, next)=>{
+    res.status (error.httpStatusCode) 
+    res.send('Error')
+})
 const port = 3000
 
 console.log(listEndPoints(server))
